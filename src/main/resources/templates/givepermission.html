@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>授权测试页面</title>
+    <script type="text/javascript" src="jss/jquery-1.12.4.js"></script>
+    <script type="text/javascript">
+        function save() {
+            var $permissionVal = $("#permission").val()
+            $.ajax({
+                url: "/updatePermission",
+                data: {"permission": $permissionVal},
+                type: "post",
+                dataType: "json",
+                success: function (result) {
+                    if (result.result == "success") {
+                        alert("修改成功");
+                    } else {
+                        alert("修改失败");
+                    }
+
+                }, error: function () {
+                    alert("/updatePermission  ajax失败")
+                }
+
+
+            })
+        }
+    </script>
+</head>
+<body>
+<table>
+    <tr>
+        <th th:text="'用户名:'+${userName}"></th>
+    </tr>
+    <tr>
+        <th th:text="'密码:'+${password}"></th>
+    </tr>
+    <tr>
+        <td>授权：</td>
+        <td>
+            <select name="permission" id="permission">
+                <option value="user:add">添加</option>
+                <option value="user:update">更新</option>
+                <option value="excel">导出数据</option>
+            </select>
+        </td>
+    </tr>
+    <tr>
+        <td><input onclick="save()" type="button" value="保存"></td>
+        <td><input onclick="window.location.href='/index'" type="button" value="返回首页"></td>
+    </tr>
+</table>
+</body>
+</html>

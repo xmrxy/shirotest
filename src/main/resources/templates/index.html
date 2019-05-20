@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml"
+      xmlns:shiro="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>test thymeleaf</title>
+    <script type="text/javascript" src="jss/jquery-1.12.4.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            var address="https://www.baidu.com";
+            $("#erwei").qrc
+
+        })
+
+
+        function outExcel() {
+            window.location.href="/excel/writeExcel";
+        }
+
+
+    </script>
+</head>
+<body>
+<h3 th:text="${name}"></h3>
+<a shiro:hasPermission="user:add" href="/add">进入添加页面</a>
+<a shiro:hasPermission="user:update" href="/update">进入更新页面</a>
+<input shiro:hasPermission="excel" onclick="outExcel()" type="button" value="导出数据">
+
+<shiro:notAuthenticated><a  href="/login">登录</a></shiro:notAuthenticated>
+<!--<shiro:notAuthenticated><a  href="/github/login">github登录</a></shiro:notAuthenticated>-->
+<shiro:notAuthenticated><a  href="https://github.com/login/oauth/authorize?client_id=bf9846959688a5c80a0a&state=1">github登录</a></shiro:notAuthenticated>
+<shiro:Authenticated><a  href="/givepermission">去授权</a></shiro:Authenticated>
+<shiro:Authenticated><a href="/logOut">注销</a></shiro:Authenticated>
+<div id="erwei"></div>
+</body>
+</html>

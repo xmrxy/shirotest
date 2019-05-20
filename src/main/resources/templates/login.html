@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8">
+    <title>登录测试页面</title>
+    <script type="text/javascript" src="/jss/jquery-1.12.4.js"></script>
+    <script type="text/javascript" src="/jss/Validform_v5.3.2.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("#formTest").Validform({
+                tiptype: function (msg, o, cssctl) {
+                    var $objtip = $("#errormsg");
+                    if (o.type != 2) {
+                        cssctl($objtip, o.type);
+                        $objtip.text(msg);
+                    } else {
+                        cssctl($objtip, o.type);
+                        $objtip.text("");
+                    }
+
+                }
+            });
+
+        })
+
+    </script>
+</head>
+
+<body>
+登录测试页面
+<p id="msg" th:text="${msg}" style="color: red"></p>
+<form id="formTest" action="/doLogin" method="post">
+    请输入用户名：<input th:value="${userName}" datatype="*" nullmsg="用户名不能为空" type="text" name="userName"><br>
+    请输入密码：<input th:value="${password}" datatype="n" nullmsg="密码不能为空" type="password" name="password"><br>
+    <p id="errormsg" style="color: red"></p>
+    <input type="submit" value="提交">
+</form>
+</body>
+
+</html>
