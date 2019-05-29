@@ -1,11 +1,9 @@
 package com.wu.shirotest.controller;
 
-import cn.hutool.core.collection.CollUtil;
 import cn.hutool.poi.excel.ExcelReader;
 import cn.hutool.poi.excel.ExcelUtil;
 import cn.hutool.poi.excel.ExcelWriter;
 import com.wu.shirotest.pojo.User;
-import com.wu.shirotest.pojo.UserRealm;
 import com.wu.shirotest.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

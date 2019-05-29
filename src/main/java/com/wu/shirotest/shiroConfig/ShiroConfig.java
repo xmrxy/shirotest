@@ -36,18 +36,20 @@ public class ShiroConfig {
 //        认证
         filterMap.put("/index","anon");
         filterMap.put("/doLogin","anon");
-        filterMap.put("/logOut","anon");
-        filterMap.put("/static/*","anon");
-        filterMap.put("/excel/ReadExcel","anon");
-        filterMap.put("/excel/writeExcel","anon");
-        filterMap.put("/wx_send","anon");
-        filterMap.put("/send","anon");
-        filterMap.put("/result","anon");
+//        filterMap.put("/logOut","anon");
+//        filterMap.put("/static/*","anon");
+//        filterMap.put("/excel/ReadExcel","anon");
+//        filterMap.put("/excel/writeExcel","anon");
+//        filterMap.put("/wx_send","anon");
+//        filterMap.put("/send","anon");
+//        filterMap.put("/result","anon");
         filterMap.put("/github/*","anon");
+//        filterMap.put("/msg/*","anon");
 //        授权
         filterMap.put("/excel/*","perms[excel]");
         filterMap.put("/add","perms[user:add]");
         filterMap.put("/update","perms[user:update]");
+        filterMap.put("/msg","perms[sendMsg]");
 
         filterMap.put("/*","authc");
         shiroFilterFactoryBean.setLoginUrl("/login");

@@ -1,6 +1,9 @@
 package com.wu.shirotest.controller;
 
 import cn.hutool.captcha.CircleCaptcha;
+import cn.hutool.core.lang.Console;
+import cn.hutool.cron.CronUtil;
+import cn.hutool.cron.task.Task;
 import com.wu.shirotest.pojo.User;
 import com.wu.shirotest.service.UserService;
 import com.wu.shirotest.util.JsonUtil;
@@ -12,12 +15,15 @@ import org.apache.shiro.subject.Subject;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 import java.util.Map;
 
 
@@ -31,7 +37,23 @@ public class ShiroController {
 
     @RequestMapping(value = "/index")
     public String indexPage(Model model) {
-        model.addAttribute("name", "测试thymeleaf");
+        try {
+            String ip = InetAddress.getLocalHost().getHostAddress();
+            model.addAttribute("ip", ip);
+        } catch (UnknownHostException e) {
+            e.printStackTrace();
+        }
+        /*******************quzart  start*********************/
+//        CronUtil.schedule("*/2 * * * * *", new Task() {
+//            @Override
+//            public void execute() {
+//                Console.log("Task excuted.");
+//            }
+//        });
+//        // 支持秒级别定时任务
+//        CronUtil.setMatchSecond(true);
+//        CronUtil.start();
+        /*******************quzart    end*********************/
         return "index";
     }
     @RequestMapping(value = "/result")
@@ -99,7 +121,7 @@ public class ShiroController {
 
     @RequestMapping(value = "/updatePermission")
     @ResponseBody
-    public String updatePermission(@Param("permission") String permission) {
+    public String updatePermission(@RequestParam("permission") String permission) {
         Subject subject = SecurityUtils.getSubject();
         Map<String, Object> map = new HashedMap();
         User user = (User) subject.getPrincipal();
@@ -114,10 +136,6 @@ public class ShiroController {
         }
     }
 
-    @RequestMapping(value = "/sendSMS")
-    public void sendSMS(){
-
-    }
 
 
 

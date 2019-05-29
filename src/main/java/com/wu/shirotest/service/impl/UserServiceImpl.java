@@ -24,6 +24,10 @@ public class UserServiceImpl implements UserService {
          users.add(wu);
      }
 
+     public static List<User> getUsers(){
+        return users;
+     }
+
     @Override
     public User findUserByUserNameAndPassword(String userName) {
         for (User user:users){
@@ -37,7 +41,6 @@ public class UserServiceImpl implements UserService {
     @Override
     public User findUserById(Integer id) {
         for (User user:users){
-            System.out.println(id.toString()+"__"+user.getId());
             if (id.toString().equals(user.getId().toString())){
                 return user;
             }

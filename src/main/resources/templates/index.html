@@ -4,33 +4,48 @@
 <head>
     <meta charset="UTF-8">
     <title>test thymeleaf</title>
-    <script type="text/javascript" src="jss/jquery-1.12.4.js"></script>
-    <script type="text/javascript">
-        $(function () {
-            var address="https://www.baidu.com";
-            $("#erwei").qrc
-
-        })
-
-
-        function outExcel() {
-            window.location.href="/excel/writeExcel";
-        }
-
-
-    </script>
+    <script src="jss/vue.js"></script>
+    <script src="jss/jquery-1.12.4.js"></script>
 </head>
 <body>
-<h3 th:text="${name}"></h3>
+<h3 th:text="${ip}"></h3>
 <a shiro:hasPermission="user:add" href="/add">进入添加页面</a>
 <a shiro:hasPermission="user:update" href="/update">进入更新页面</a>
 <input shiro:hasPermission="excel" onclick="outExcel()" type="button" value="导出数据">
+<input shiro:hasPermission="sendMsg" onclick="sendMsg()" type="button" value="发送短信">
+<div></div>
 
 <shiro:notAuthenticated><a  href="/login">登录</a></shiro:notAuthenticated>
 <!--<shiro:notAuthenticated><a  href="/github/login">github登录</a></shiro:notAuthenticated>-->
 <shiro:notAuthenticated><a  href="https://github.com/login/oauth/authorize?client_id=bf9846959688a5c80a0a&state=1">github登录</a></shiro:notAuthenticated>
 <shiro:Authenticated><a  href="/givepermission">去授权</a></shiro:Authenticated>
 <shiro:Authenticated><a href="/logOut">注销</a></shiro:Authenticated>
-<div id="erwei"></div>
+<div shiro:hasPermission="sendMsg" id="app">
+    <p>发送给谁：{{toNum}}</p>
+    <p>内容：{{content}}</p>
+    <p>有效时间（分钟）：{{time}}</p>
+    <p>ToNum：<input id="toNum" type="text" readonly="readonly" v-model="toNum"/></p>
+    <p>Content: <input id="content" type="text" v-model="content"></p>
+    <p>Time: <input id="time" type="text" v-model="time"></p>
+</div>
 </body>
+<script type="text/javascript">
+
+    function outExcel() {
+        window.location.href="/excel/writeExcel";
+    }
+    
+    function sendMsg() {
+        window.location.href="/msg/sendMsg?toNum="+$("#toNum").val()+"&content="+$("#content").val()+"&time="+$("#time").val();
+    }
+
+    var info={toNum:"13265937858",content:"569864",time:"1"}
+
+    new Vue({
+        el:'#app',
+        data:info
+    })
+
+
+</script>
 </html>
