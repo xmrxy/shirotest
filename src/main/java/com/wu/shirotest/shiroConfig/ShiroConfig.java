@@ -42,9 +42,9 @@ public class ShiroConfig {
 //        filterMap.put("/excel/writeExcel","anon");
 //        filterMap.put("/wx_send","anon");
 //        filterMap.put("/send","anon");
-//        filterMap.put("/result","anon");
+        filterMap.put("/result","anon");
         filterMap.put("/github/*","anon");
-//        filterMap.put("/msg/*","anon");
+        filterMap.put("/dialog/*","anon");
 //        授权
         filterMap.put("/excel/*","perms[excel]");
         filterMap.put("/add","perms[user:add]");

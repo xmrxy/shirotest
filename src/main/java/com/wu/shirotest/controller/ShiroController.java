@@ -24,6 +24,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 
@@ -134,6 +136,11 @@ public class ShiroController {
             map.put("result", "error");
             return JsonUtil.getJson(map);
         }
+    }
+
+    @RequestMapping(value = "/vueHtml")
+    public String vueHtml(){
+        return "vue";
     }
 
 

@@ -11,6 +11,7 @@ import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
 
+
 @Service
 public class UserServiceImpl implements UserService {
 
@@ -53,7 +54,7 @@ public class UserServiceImpl implements UserService {
         return users;
     }
 
-    @Override
+    @Override 
     public int updatePermission(Integer id, String permission) {
          int i=-1;
          for(User user:users){

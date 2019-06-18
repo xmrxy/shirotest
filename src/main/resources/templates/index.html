@@ -6,6 +6,10 @@
     <title>test thymeleaf</title>
     <script src="jss/vue.js"></script>
     <script src="jss/jquery-1.12.4.js"></script>
+    <link rel="stylesheet" href="jss/dialog/jquery-ui.min.css">
+    <script src="jss/dialog/jquery.min.js"></script>
+    <script src="jss/dialog/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="jss/dialog/style.css">
 </head>
 <body>
 <h3 th:text="${ip}"></h3>
@@ -28,6 +32,16 @@
     <p>Content: <input id="content" type="text" v-model="content"></p>
     <p>Time: <input id="time" type="text" v-model="time"></p>
 </div>
+
+
+<div id="dialog" title="Basic dialog">
+    <p>这是一个
+        动画显示的对话框，用于显示信息。对话框窗口可以移动，调整尺寸，默认可通过 'x' 图标关闭。</p>
+    <input id="but" type="button" value="保存">
+</div>
+
+<button id="opener">打开对话框</button>
+
 </body>
 <script type="text/javascript">
 
@@ -46,6 +60,31 @@
         data:info
     })
 
+
+    $(function() {
+        /*dialog  start*/
+        $( "#dialog" ).dialog({
+            autoOpen: false,
+            show: {
+                effect: "blind",
+                duration: 1000
+            },
+            hide: {
+                effect: "explode",
+                duration: 1000
+            }
+        });
+
+        $( "#opener" ).click(function() {
+            $( "#dialog" ).dialog( "open" );
+        });
+
+        $("#but").click(function () {
+            $( "#dialog" ).dialog( "close" );
+        })
+
+        /*dialog  end*/
+    });
 
 </script>
 </html>

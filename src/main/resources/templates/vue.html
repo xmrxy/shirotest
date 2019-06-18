@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>测试页面</title>
+    <script type="text/javascript" src="jss/vue.js"></script>
+    <style>
+        .class1 {
+            background: #444;
+            color: #eee;
+        }
+    </style>
+</head>
+
+<body>
+<div id="div1">
+    <h3>标题：{{title}}</h3>
+    <h3>作者：{{author}}</h3>
+    <h3>内容：{{content}}</h3>
+    <input type="text" v-model="inputText">
+    <h3>测试方法：{{vueMethod(inputText)}}</h3>
+    <h3>vue对象属性绑定：{{inputText}}</h3>
+    <button type="checkbox" v-on:click="updateColor">修改颜色</button>
+    <div v-bind:class="{'class1':flag}">背景颜色</div>
+</div>
+    <br><hr><br>
+ <div id="div2">
+     <h3>过滤后的字符串：{{content|filterForStr}}</h3>
+     <p>输入需要过滤的内容：<input type="text" v-model="content"></p>
+ </div>
+
+
+
+</body>
+<script type="text/javascript">
+    var vueData1 = {mark:1,"flag": false, title: "vue.js测试标题", author: "尤雨溪", content: "vue测试内容", inputText: ""};
+    new Vue({
+            el: "#div1",
+            data: vueData1,
+            methods: {
+                vueMethod: function (data) {
+                    return data;
+                },
+                updateColor:function () {
+                    if (this.mark==1){
+                        this.mark=2;
+                        return this.flag=true;
+                    }else if (this.mark==2) {
+                        this.mark=1;
+                        return this.flag=false;
+                    }
+                }
+            }
+        }
+    )
+    var vueData2={content:""};
+    new Vue({
+        el:"#div2",
+        data:vueData2,
+        filters:{
+            filterForStr:function (value) {
+                value=value.toString()
+                return value.charAt(0).toUpperCase()+value.slice(1)
+            }
+
+        }
+    })
+
+
+
+</script>
+</html>

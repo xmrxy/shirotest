@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>jQuery UI 对话框（Dialog） - 动画</title>
+    <link rel="stylesheet" href="//apps.bdimg.com/libs/jqueryui/1.10.4/css/jquery-ui.min.css">
+    <script src="//apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="//apps.bdimg.com/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="jqueryui/style.css">
+    <script>
+        $(function() {
+            $( "#dialog" ).dialog({
+                autoOpen: false,
+                show: {
+                    effect: "blind",
+                    duration: 1000
+                },
+                hide: {
+                    effect: "explode",
+                    duration: 1000
+                }
+            });
+
+            $( "#opener" ).click(function() {
+                $( "#dialog" ).dialog( "open" );
+            });
+
+            $("#but").click(function () {
+                $( "#dialog" ).dialog( "close" );
+            })
+        });
+    </script>
+</head>
+<body>
+
+<div id="dialog" title="Basic dialog">
+    <p>这是一个
+        动画显示的对话框，用于显示信息。对话框窗口可以移动，调整尺寸，默认可通过 'x' 图标关闭。</p>
+    <input id="but" type="button" value="保存">
+</div>
+
+<button id="opener">打开对话框</button>
+
+
+</body>
+</html>
