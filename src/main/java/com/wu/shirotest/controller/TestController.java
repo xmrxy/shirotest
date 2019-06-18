@@ -12,6 +12,7 @@ public class TestController {
 
     @RequestMapping(value = "/dialogPage")
     public String DialogHtml(){
+        System.out.println("aa");
         return "dialog";
     }
 }
