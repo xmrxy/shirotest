@@ -48,7 +48,6 @@ public class GithubContrller {
             String getTokenUrl = "https://api.github.com/user?access_token=" + map.get("access_token");
             String userInfo = UrlUtils.loadURL(getTokenUrl);
             map = JsonUtil.getMapper().readValue(userInfo, Map.class);
-            Iterator<String> iterator = map.keySet().iterator();
             for (Object o:map.keySet()){
                 System.out.println("key:"+o);
                 System.out.println("values:"+map.get(o));
