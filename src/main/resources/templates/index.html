@@ -17,6 +17,8 @@
 <a shiro:hasPermission="user:update" href="/update">进入更新页面</a>
 <input shiro:hasPermission="excel" onclick="outExcel()" type="button" value="导出数据">
 <input shiro:hasPermission="sendMsg" onclick="sendMsg()" type="button" value="发送短信">
+<input shiro:hasPermission="download" type="button" onclick="download()" id="download" value="下载d盘里面的test.txt文件">
+<input shiro:hasPermission="vue" type="button" onclick="vue()" id="vue" value="打开vue测试页面">
 <div></div>
 
 <shiro:notAuthenticated><a  href="/login">登录</a></shiro:notAuthenticated>
@@ -44,6 +46,14 @@
 
 </body>
 <script type="text/javascript">
+
+    function download() {
+        window.location.href="/downLoadTXT";
+    }
+    function vue() {
+        window.location.href="/vueHtml";
+    }
+
 
     function outExcel() {
         window.location.href="/excel/writeExcel";

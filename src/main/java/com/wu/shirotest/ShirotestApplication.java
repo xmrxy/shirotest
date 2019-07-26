@@ -16,6 +16,8 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @ServletComponentScan
 public class ShirotestApplication {
 
+
+    // nohup
     public static void main(String[] args) {
         SpringApplication.run(ShirotestApplication.class, args);
     }

@@ -56,7 +56,7 @@ public class UserServiceImpl implements UserService {
 
     @Override 
     public int updatePermission(Integer id, String permission) {
-         int i=-1;
+         int i=0;
          for(User user:users){
              if (id.toString().equals(user.getId().toString())){
                  i++;

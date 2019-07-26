@@ -58,8 +58,8 @@ public class ReadExcel {
         User user = new User(2,"zhangsan","张三","111111","111111","123@aa.com","user:add");
         User user1 = new User(3,"list","李四","111111","111111","123@aa.com","user:update");
         List<User> users = new ArrayList<>();
-//        users.add(user);
-//        users.add(user1);
+        users.add(user);
+        users.add(user1);
 
         User userTitle=new User("编号","用户名","真实姓名","密码","电话","邮箱","权限");
         users.add(0,userTitle);
@@ -84,5 +84,8 @@ public class ReadExcel {
 
         return "success";
     }
+
+
+
 
 }
