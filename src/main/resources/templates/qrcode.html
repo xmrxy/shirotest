@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>生成二维码页面</title>
+    <script src="jss/jquery-1.12.4.js"></script>
+    <script type="text/javascript" src="jss/Validform_v5.3.2.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("#sceneMod").Validform({
+                tiptype: function (msg, o, cssctl) {
+                    var $objtip = $("#errormsg");
+                    if (o.type != 2) {
+                        cssctl($objtip, o.type);
+                        $objtip.text("11111");
+                    } else {
+                        cssctl($objtip, o.type);
+                        $objtip.text("");
+                    }
+                }
+            });
+            
+        })
+        
+        function getCode() {
+           var $url=$("#url").val().trim();
+           var $imgPath=$("#imgPath").val().trim();
+           var $savePath=$("#savePage").val().trim();
+            $.ajax({
+                // 生成策略1
+                // url:"/qrCode",
+                // 生成策略2
+                url:"/qrCode2",
+                data:{"url":$url,"imgPath":$imgPath,"savePath":$savePath},
+                dateType:"json",
+                type:"post",
+                success:function (data) {
+                    if (data.result=="1") {
+                        $("#img").attr('src',"/code.jpg");
+                        $("#img").show();
+                    }
+                },error:function () {
+                   alert("ajax 生成二维码错误")
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+<table>
+    <tr><td><img id="img" style="display: none" src="" alt="图片生成成功，但图片显示错误"></td></tr>
+    <tr><td>请输入二维码保存地址：</td><td><input id="savePage" clos="30" rows="10" datatype="*" nullmsg="请输入保存地址" placeholder="请输入保存地址" value="C:/Users/Administrator/Desktop"></input></td></tr>
+    <tr><td>请输入二维码链接地址（http://）：</td><td><input id="url" clos="30" rows="10" datatype="*" nullmsg="请输入二维码链接地址" placeholder="请输入二维码链接地址" value="www.baidu.com"></input></td></tr>
+    <tr><td>请输入带logo时，logo图片的地址:</td><td><input id="imgPath" clos="30" rows="10" placeholder="请输入二维码带logo的图片路径" value="C:/Users/Administrator/Desktop/1.png"></input></td></tr>
+    <tr><td><p id="errormsg"  type="hidden"></p></td></tr>
+    <tr><td><input type="button" onclick="getCode()" value="点击生成"></td></tr>
+    <td><input onclick="window.location.href='/index'" type="button" value="返回首页"></td>
+</table>
+</body>
+</html>

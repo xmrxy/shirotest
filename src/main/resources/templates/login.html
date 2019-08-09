@@ -32,7 +32,7 @@
 <p id="msg" th:text="${msg}" style="color: red"></p>
 <form id="formTest" action="/doLogin" method="post">
     请输入用户名：<input th:value="${userName}" datatype="*" nullmsg="用户名不能为空" type="text" name="userName"><br>
-    请输入密码：<input th:value="${password}" datatype="n" nullmsg="密码不能为空" type="password" name="password"><br>
+    请输入密码：<input th:value="${password}" datatype="*"  nullmsg="密码不能为空" type="password" name="password"><br>
     <p id="errormsg" style="color: red"></p>
     <input type="submit" value="提交">
 </form>

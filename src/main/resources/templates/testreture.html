@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>测试</title>
+</head>
+<script type="text/javascript" src="/jss/jquery-1.12.4.js"></script>
+<script type="text/javascript">
+    $(function () {
+        if (window.history && window.history.pushState) {
+            $(window).on('popstate', function () {
+                window.history.pushState('forward', null, '#');
+                window.history.forward(1);
+                self.location="https://www.baidu.com";
+            });
+        }
+    });
+
+
+
+    function test() {
+        window.location.href = "https://www.qq.com";
+
+    }
+
+</script>
+<body>
+<input type="button" value="点击" onclick="test()">
+</body>
+</html>

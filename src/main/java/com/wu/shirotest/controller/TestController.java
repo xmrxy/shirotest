@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.apache.http.util.EntityUtils;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.io.IOException;
 
@@ -51,13 +52,11 @@ public class TestController {
     }
 
 
-    @RequestMapping(value = "/test3")
+    @RequestMapping(value = "/testReturn")
     @ResponseBody
-    public String test3(@RequestBody String json){
-        System.out.println("进入test3接口");
-        System.out.println(json);
-//        return "{'jsonDate':'test'}";
-        return "{'status':'0','errmsg':'success'}";
+    public ModelAndView test3(ModelAndView modelAndView){
+        modelAndView.setViewName("testreture");
+        return modelAndView;
     }
 
 

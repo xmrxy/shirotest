@@ -114,6 +114,21 @@
             <version>2.4</version>
             <classifier>jdk15</classifier>
         </dependency>
+
+        <!--二维码依赖code-->
+        <dependency>
+            <groupId>wu.gy</groupId>
+            <artifactId>qrcode</artifactId>
+            <version>3.1.0</version>
+        </dependency>
+
+        <!--二维码依赖qrcode-->
+        <dependency>
+            <groupId>wu.gy</groupId>
+            <artifactId>qrcode.QRCode</artifactId>
+            <version>1.1.0</version>
+        </dependency>
+
     </dependencies>
 
     <build>
