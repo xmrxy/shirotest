@@ -11,6 +11,7 @@ public class ShirotestApplicationTests {
 
     @Test
     public void contextLoads() {
+
     }
 
 }

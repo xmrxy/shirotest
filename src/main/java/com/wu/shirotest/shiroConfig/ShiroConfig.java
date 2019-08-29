@@ -36,6 +36,11 @@ public class ShiroConfig {
 //        认证
         filterMap.put("/index","anon");
         filterMap.put("/doLogin","anon");
+        filterMap.put("/testJson","anon");
+        filterMap.put("/showPicture","anon");
+        filterMap.put("/getVCode","anon");
+        filterMap.put("/VCodePage","anon");
+        filterMap.put("/checkCode","anon");
 //        filterMap.put("/logOut","anon");
 //        filterMap.put("/static/*","anon");
 //        filterMap.put("/excel/ReadExcel","anon");
@@ -44,7 +49,7 @@ public class ShiroConfig {
 //        filterMap.put("/send","anon");
         filterMap.put("/result","anon");
         filterMap.put("/github/*","anon");
-        filterMap.put("/dialog/*","anon");
+        filterMap.put("/dialogPage","anon");
 //        授权
         filterMap.put("/excel/*","perms[excel]");
         filterMap.put("/add","perms[user:add]");

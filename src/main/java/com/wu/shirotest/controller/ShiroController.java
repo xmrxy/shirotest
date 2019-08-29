@@ -1,14 +1,9 @@
 package com.wu.shirotest.controller;
 
-import cn.hutool.captcha.CircleCaptcha;
-import cn.hutool.core.lang.Console;
-import cn.hutool.cron.CronUtil;
-import cn.hutool.cron.task.Task;
 import com.wu.shirotest.pojo.User;
 import com.wu.shirotest.service.UserService;
 import com.wu.shirotest.util.JsonUtil;
 import org.apache.commons.collections.map.HashedMap;
-import org.apache.ibatis.annotations.Param;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
@@ -24,8 +19,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 
 
@@ -59,7 +52,7 @@ public class ShiroController {
         return "index";
     }
     @RequestMapping(value = "/result")
-    public String resultPage(Model model) {
+    public String resultPage() {
         return "result";
     }
 

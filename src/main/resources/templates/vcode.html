@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>验证码页面</title>
+    <script src="jss/jquery-1.12.4.js"></script>
+    <script type="text/javascript">
+        function changeImg() {
+            var imgSrc = $("#imgObj");
+            var src = imgSrc.attr("src");
+            var url=chgUrl(src);
+            imgSrc.attr("src",url);
+        }
+
+        // 时间戳
+        // 为了使每次生成图片不一致，即不让浏览器读缓存，所以需要加上时间戳
+        function chgUrl(url) {
+            var timestamp = (new Date()).valueOf();
+            url = url.substring(0, 9);
+            if ((url.indexOf("&") >= 0)) {
+                url = url + "×tamp=" + timestamp;
+            } else {
+                url = url + "?timestamp=" + timestamp;
+            }
+            return url;
+        }
+
+        function check() {
+           var $vcode=$("#Vcode").val();
+           $.ajax({
+               url:"/checkCode",
+               data:{"code":$vcode},
+               type:"post",
+               dataType:"json",
+               success:function (data) {
+                   if("success"==data.msg){
+                       $("#msg").css("color","blue");
+                       $("#msg").text("验证成功");
+                   }else {
+                       $("#msg").css("color","red");
+                       $("#msg").text("验证失败");
+                   }
+               },error:function () {
+                   alert("check ajax失败");
+               }
+           })
+        }
+    </script>
+</head>
+<body>
+<div style="height:500px;width:500px;margin: auto;margin-top: 10%">
+    <div style="height:100px;width: 100px;margin: auto;margin-top: 10%">
+    <table>
+        <tr>
+            <td><img src="/getVCode" id="imgObj" alt="图片显示不了"></td>
+            <td><input type="button" onclick="changeImg()" value="换一张"></td>
+        </tr>
+        <tr><td colspan="2"><input type="text" id="Vcode"></td></tr>
+        <tr><td td colspan="2"><input type="button" onclick="check()" value="提交"></td></tr>
+        <tr><td td colspan="2"><span id="msg" ></span></td></tr>
+    </table>
+    </div>
+</div>
+
+
+</body>
+</html>

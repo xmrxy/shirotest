@@ -19,7 +19,6 @@ import org.springframework.web.servlet.ModelAndView;
 import java.io.IOException;
 
 @Controller
-@RequestMapping(value = "/dialog")
 public class TestController {
 
 
@@ -106,6 +105,7 @@ public class TestController {
             }
             return result;
     }
+
 
 
 

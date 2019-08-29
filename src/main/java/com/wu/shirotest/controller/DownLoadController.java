@@ -1,16 +1,14 @@
 package com.wu.shirotest.controller;
 
-import cn.hutool.core.io.FileUtil;
-import org.apache.catalina.core.ApplicationContext;
 import org.springframework.stereotype.Controller;
-import org.springframework.util.ResourceUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.ModelAndView;
 
-import javax.annotation.Resource;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
-import java.io.*;
+import java.io.BufferedInputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
 
 @Controller
 public class DownLoadController {
@@ -20,7 +18,6 @@ public class DownLoadController {
         ServletOutputStream outputStream = null;
         File file=new File("D://test.txt");
         if (file.exists()) {
-
             response.setHeader("content-type", "application/octet-stream");
             response.setContentType("application/octet-stream");
             response.setHeader("Content-Disposition", "attachment;filename=text.txt");
